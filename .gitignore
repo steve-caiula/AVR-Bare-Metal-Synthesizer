@@ -1,0 +1,7 @@
+# Folders
+.pio/
+.vscode/
+
+# Compiled files
+*.bin
+*.hex
