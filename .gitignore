@@ -2,6 +2,7 @@
 .pio/
 .vscode/
 
-# Compiled files
+# Files
 *.bin
 *.hex
+*.ini
