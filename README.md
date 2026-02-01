@@ -32,6 +32,14 @@ The project is structured to separate hardware configuration, musical data, and 
 
 ## ⚙️ Technical Implementation
 
+### Technical Choices & Architecture
+This project was built to demonstrate **real-time constraints handling** and **low-level hardware control**, intentionally bypassing the Arduino framework and high-level abstraction layers.
+
+* **Pure Bare-Metal Implementation:** The firmware is written in **ANSI C**, interacting directly with the ATmega328P registers (`DDRx`, `PORTx`, `TCCRx`). This ensures deterministic behavior and eliminates the overhead introduced by the Arduino `wiring` library.
+* **Direct Timer/Counter Manipulation:** Audio synthesis is achieved by manually configuring 8-bit and 16-bit Hardware Timers (Timer0/Timer1) in CTC and Fast PWM modes, allowing for precise frequency generation independent of the main CPU loop.
+* **Interrupt-Driven Logic:** Critical tasks are handled via **Interrupt Service Routines (ISRs)** to guarantee timing accuracy and minimize jitter, a crucial requirement for digital signal processing (DSP).
+* **Memory Optimization:** By avoiding standard libraries, the compiled binary footprint is drastically reduced, leaving maximum Flash and SRAM available for wavetables and logic features.
+
 ### Frequency Generation
 The frequency of the notes is determined by the formula:
 $$OCR1A = \frac{F\_CPU}{2 \cdot N \cdot \text{Frequency}} - 1$$
