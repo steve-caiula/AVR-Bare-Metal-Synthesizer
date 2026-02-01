@@ -14,15 +14,20 @@ AVRDUDE = avrdude
 CFLAGS = -Wall -Os -mmcu=$(MCU) -DF_CPU=$(F_CPU) -Iinclude
 
 # Main target
-all: main.hex
+all: main.hex main.bin
 
-# Compile C source from the src folder
-main.bin: src/main.c include/pitches.h
-	$(CC) $(CFLAGS) -o main.bin src/main.c
+# 1. Link the object files into an ELF (Executable and Linkable Format) file
+# This file contains debug symbols and metadata (the ~9KB file you saw)
+main.elf: src/main.c include/pitches.h
+	$(CC) $(CFLAGS) -o main.elf src/main.c
 
-# Convert binary to Intel HEX format
-main.hex: main.bin
-	$(OBJCOPY) -O ihex main.bin main.hex
+# 2. Extract the Intel HEX format for flashing
+main.hex: main.elf
+	$(OBJCOPY) -O ihex main.elf main.hex
+
+# 3. Extract the raw binary footprint (this will be the <300 bytes file)
+main.bin: main.elf
+	$(OBJCOPY) -O binary main.elf main.bin
 
 # Upload the HEX file to the Arduino board
 flash: main.hex
@@ -30,4 +35,4 @@ flash: main.hex
 
 # Clean up build artifacts
 clean:
-	del main.bin main.hex
+	del main.elf main.hex main.bin
