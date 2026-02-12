@@ -72,49 +72,49 @@ int main (void)
 
         // ----- Polling: Check which button is pressed -----
 
-        // C
+        // C4
         if (!(PINC & (1 << BUTTON_C))) 
         { 
             current_note = NOTE_C4;
             mode = PLAYING; 
         }
         
-        // D
+        // D4
         else if (!(PINC & (1 << BUTTON_D))) 
         {
             current_note = NOTE_D4; 
             mode = PLAYING;
         }
             
-        // E
+        // E4
         else if (!(PINC & (1 << BUTTON_E))) 
         {
             current_note = NOTE_E4;
             mode = PLAYING;
         }
 
-        // F
+        // F4
         else if (!(PINC & (1 << BUTTON_F))) 
         {
             current_note = NOTE_F4;
             mode = PLAYING;
         }
 
-        // G
+        // G4
         else if (!(PINC & (1 << BUTTON_G))) 
         {
             current_note = NOTE_G4; 
             mode = PLAYING;
         }
 
-        // A
+        // A4
         else if (!(PINC & (1 << BUTTON_A))) 
         { 
             current_note = NOTE_A4; 
             mode = PLAYING;
         }
 
-        // B
+        // B4
         else if (!(PIND & (1 << BUTTON_B))) 
         {
             current_note = NOTE_B4; 
