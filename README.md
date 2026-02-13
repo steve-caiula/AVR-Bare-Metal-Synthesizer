@@ -51,7 +51,7 @@ The software uses a non-blocking polling mechanism to check the state of **Port 
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/steve-caiula/AVR-Bare-Metal-Synthesizer.git](https://github.com/steve-caiula/AVR-Bare-Metal-Synthesizer.git)
+git clone https://github.com/steve-caiula/AVR-Bare-Metal-Synthesizer.git
 cd AVR-Bare-Metal-Synthesizer
 
 # 2. Compile the project
@@ -64,7 +64,7 @@ make flash
 make clean
 ```
 ## Demo
-
+https://github.com/steve-caiula/AVR-Bare-Metal-Synthesizer/blob/main/demo.mp4
 
 ## Author
 Stefano Caiula (steve-caiula)
